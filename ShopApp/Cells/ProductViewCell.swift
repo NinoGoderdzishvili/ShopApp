@@ -16,7 +16,6 @@ class ProductViewCell: UITableViewCell {
     @IBOutlet weak var productQuantityLbl: UILabel!
     
     private var quantity: Int = 0
-    private var sumQuantity: Int = 0
     
     weak var delegate: TableViewCellDelegate?
     
@@ -51,28 +50,23 @@ class ProductViewCell: UITableViewCell {
     }
     
     @IBAction func decreaseQuantity(_ sender: Any) {
-        
         if self.quantity > 0 {
-            self.sumQuantity -= self.quantity
             self.quantity -= 1
-            updateItemQuantity(isIncreasing: false)
+            updateItemQuantity()
         }
     }
     
     @IBAction func increaseQuantity(_ sender: Any) {
         self.quantity += 1
-        self.sumQuantity += self.quantity
-        updateItemQuantity(isIncreasing: true)
+        updateItemQuantity()
     }
     
-    func updateItemQuantity(isIncreasing: Bool) {
-        self.quantity = isIncreasing ? self.quantity + 1 : self.quantity - 1
+    func updateItemQuantity() {
         productQuantityLbl.text = "\(self.quantity)"
-        delegate?.getData(data: productQuantityLbl.text)
+        delegate?.getData(data: "\(productQuantityLbl!.text!)x")
     }
     
     func setImage(image: UIImage){
         self.productImage.image = image
     }
-    
 }
