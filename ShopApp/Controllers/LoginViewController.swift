@@ -65,12 +65,6 @@ class LoginViewController: UIViewController {
         }
         
         if let vc = storyboard?.instantiateViewController(withIdentifier: "ProductsViewController") as? ProductsViewController {
-            
-//            let currentUserPosts = userPosts[indexPath.section]
-//            let currentUserPost = currentUserPosts[indexPath.row]
-//
-//            vc.postId = currentUserPost.id
-            
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
