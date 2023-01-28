@@ -52,6 +52,13 @@ class ProductsViewController: UIViewController {
                 }
             }
     }
+    
+    @IBAction func goToCart(_ sender: Any) {
+        if let vc = storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
 }
 
 extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
@@ -66,19 +73,19 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, Ta
         
         let products = products[indexPath.section]
         let product = products[indexPath.row]
-
+        
         cell.productNameLbl.text = product.title
         cell.productStockLbl.text = "stock: \(product.stock)"
         cell.productPriceLbl.text = "price: \(product.price)"
         cell.productQuantityLbl.text = "0"
-
+        
         let url = URL(string: product.images.first!)!
-
+        
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data, error == nil else { return }
-
+            
             let image = UIImage(data: data)
-
+            
             DispatchQueue.main.async {
                 cell.productImage.image = image
             }

@@ -68,5 +68,53 @@
             landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F14B268-4220-4474-8AEA-059D8FC78C0C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShopApp/Controllers/ProductsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "goToCart(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F14B268-4220-4474-8AEA-059D8FC78C0C - 9decc73d0d4ce2f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShopApp.ProductsViewController.goToCart(Any) -&gt; ()"
+                  moduleName = "ShopApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ninogoderdzishvili/Desktop/ShopApp/ShopApp/Controllers/ProductsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "0F14B268-4220-4474-8AEA-059D8FC78C0C - 9decc73d0d4ce2f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShopApp.ProductsViewController.goToCart(Any) -&gt; ()"
+                  moduleName = "ShopApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ninogoderdzishvili/Desktop/ShopApp/ShopApp/Controllers/ProductsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "396">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

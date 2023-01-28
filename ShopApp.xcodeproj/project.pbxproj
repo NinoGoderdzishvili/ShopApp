@@ -26,6 +26,7 @@
 		92B768A32983079B00A27C1E /* bag.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B768A22983079B00A27C1E /* bag.png */; };
 		92B768A52983084000A27C1E /* Line 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B768A42983084000A27C1E /* Line 1.png */; };
 		92B768A829830D1400A27C1E /* TableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768A729830D1400A27C1E /* TableViewCellDelegate.swift */; };
+		92B768AA29850FD700A27C1E /* PaymentProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768A929850FD700A27C1E /* PaymentProductViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		92B768A22983079B00A27C1E /* bag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bag.png; sourceTree = "<group>"; };
 		92B768A42983084000A27C1E /* Line 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line 1.png"; sourceTree = "<group>"; };
 		92B768A729830D1400A27C1E /* TableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDelegate.swift; sourceTree = "<group>"; };
+		92B768A929850FD700A27C1E /* PaymentProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				92B76899298070A600A27C1E /* ProductViewCell.swift */,
+				92B768A929850FD700A27C1E /* PaymentProductViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			files = (
 				92B76892297F1E1300A27C1E /* ProductResponseModel.swift in Sources */,
 				92B76885297B279D00A27C1E /* LoginViewController.swift in Sources */,
+				92B768AA29850FD700A27C1E /* PaymentProductViewCell.swift in Sources */,
 				92B7689A298070A600A27C1E /* ProductViewCell.swift in Sources */,
 				92B7689F2981C0CE00A27C1E /* SequenceExtension.swift in Sources */,
 				92B768972980646600A27C1E /* ProductsViewController.swift in Sources */,
