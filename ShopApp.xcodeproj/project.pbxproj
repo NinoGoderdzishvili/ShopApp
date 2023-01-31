@@ -27,6 +27,10 @@
 		92B768A52983084000A27C1E /* Line 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B768A42983084000A27C1E /* Line 1.png */; };
 		92B768A829830D1400A27C1E /* TableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768A729830D1400A27C1E /* TableViewCellDelegate.swift */; };
 		92B768AA29850FD700A27C1E /* PaymentProductViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768A929850FD700A27C1E /* PaymentProductViewCell.swift */; };
+		92B768AC2989A78600A27C1E /* close-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B768AB2989A78600A27C1E /* close-circle.png */; };
+		92B768AE2989A7C400A27C1E /* tick-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 92B768AD2989A7C400A27C1E /* tick-circle.png */; };
+		92B768B02989A80900A27C1E /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768AF2989A80900A27C1E /* PaymentSuccessViewController.swift */; };
+		92B768B22989A82000A27C1E /* PaymentFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92B768B12989A82000A27C1E /* PaymentFailedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +56,10 @@
 		92B768A42983084000A27C1E /* Line 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Line 1.png"; sourceTree = "<group>"; };
 		92B768A729830D1400A27C1E /* TableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellDelegate.swift; sourceTree = "<group>"; };
 		92B768A929850FD700A27C1E /* PaymentProductViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentProductViewCell.swift; sourceTree = "<group>"; };
+		92B768AB2989A78600A27C1E /* close-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-circle.png"; sourceTree = "<group>"; };
+		92B768AD2989A7C400A27C1E /* tick-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tick-circle.png"; sourceTree = "<group>"; };
+		92B768AF2989A80900A27C1E /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		92B768B12989A82000A27C1E /* PaymentFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentFailedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,8 @@
 		92B7688A297B2CE100A27C1E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				92B768AD2989A7C400A27C1E /* tick-circle.png */,
+				92B768AB2989A78600A27C1E /* close-circle.png */,
 				92B768A42983084000A27C1E /* Line 1.png */,
 				92B768A22983079B00A27C1E /* bag.png */,
 				92B768A0298305FE00A27C1E /* arrow-right.png */,
@@ -136,6 +146,8 @@
 				92B76884297B279D00A27C1E /* LoginViewController.swift */,
 				92B768962980646600A27C1E /* ProductsViewController.swift */,
 				92B7689B2981B26C00A27C1E /* PaymentViewController.swift */,
+				92B768AF2989A80900A27C1E /* PaymentSuccessViewController.swift */,
+				92B768B12989A82000A27C1E /* PaymentFailedViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -223,12 +235,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92B768AC2989A78600A27C1E /* close-circle.png in Resources */,
 				92B768A52983084000A27C1E /* Line 1.png in Resources */,
 				92B768A32983079B00A27C1E /* bag.png in Resources */,
 				92B7687D29786F9200A27C1E /* LaunchScreen.storyboard in Resources */,
 				92B7688C297B2D0C00A27C1E /* ShopAppImg.png in Resources */,
 				92B7687A29786F9200A27C1E /* Assets.xcassets in Resources */,
 				92B768A1298305FE00A27C1E /* arrow-right.png in Resources */,
+				92B768AE2989A7C400A27C1E /* tick-circle.png in Resources */,
 				92B7687829786F9100A27C1E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +259,8 @@
 				92B768AA29850FD700A27C1E /* PaymentProductViewCell.swift in Sources */,
 				92B7689A298070A600A27C1E /* ProductViewCell.swift in Sources */,
 				92B7689F2981C0CE00A27C1E /* SequenceExtension.swift in Sources */,
+				92B768B02989A80900A27C1E /* PaymentSuccessViewController.swift in Sources */,
+				92B768B22989A82000A27C1E /* PaymentFailedViewController.swift in Sources */,
 				92B768972980646600A27C1E /* ProductsViewController.swift in Sources */,
 				92B7687529786F9100A27C1E /* ViewController.swift in Sources */,
 				92B76890297F1BCF00A27C1E /* Product.swift in Sources */,

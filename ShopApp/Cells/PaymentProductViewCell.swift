@@ -17,6 +17,12 @@ class PaymentProductViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        makeTextBold(label: productTitle)
+        makeTextBold(label: productQuantity)
+        makeTextBold(label: productTotalPrice)
+        
+        setupProductImage()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,5 +30,17 @@ class PaymentProductViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func setupProductImage(){
+        prdouctImg.layer.borderWidth = 0.5
+        prdouctImg.layer.masksToBounds = false
+        prdouctImg.layer.borderColor = UIColor.lightGray.cgColor
+        prdouctImg.layer.cornerRadius = 15
+        prdouctImg.clipsToBounds = true
+    }
+    
+    func makeTextBold(label: UILabel) {
+        label.textColor = .black
+        label.font = UIFont.boldSystemFont(ofSize: 14.0)
+    }
 }

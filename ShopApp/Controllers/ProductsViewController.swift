@@ -7,19 +7,34 @@
 
 import UIKit
 
+struct ProductModel: Equatable {
+    let id: Int
+    let image: UIImage
+    let name: String
+    let quantity: Int
+    let price: Int
+}
+
 class ProductsViewController: UIViewController {
+    
+    var cartProducts = [ProductModel]()
     
     @IBOutlet weak var productsTableView: UITableView!
     
+    @IBOutlet weak var cellProductQtyLbl: UILabel!
     @IBOutlet weak var productQtyLbl: UILabel!
     @IBOutlet weak var productSumPriceLbl: UILabel!
+    
+    private var productQuantity: Int = 0
+    
+    var productQuantities = [Int]()
     
     var products = [[Product]]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        productQtyLbl.text = "0"
+        productQtyLbl.text = "0x"
         productQtyLbl.textColor = .white
         productQtyLbl.font = UIFont.boldSystemFont(ofSize: 14.0)
         
@@ -55,15 +70,95 @@ class ProductsViewController: UIViewController {
     
     @IBAction func goToCart(_ sender: Any) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController {
+            vc.products = self.cartProducts
+            vc.subTotal = getSubTotal()
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
-    
 }
 
-extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate {
+extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, ProductViewCellDelegate  {
+    
+    func minusBtnTapped(with productId: Int,
+                        with productImage: UIImage,
+                        with productName: String,
+                        with productQuantity: String,
+                        with productPrice: String) {
+        
+        if !self.cartProducts.isEmpty {
+            
+            let quantity = Int(productQuantity)!
+            
+            if quantity == 0 {
+                self.cartProducts.removeAll(where: { $0.id == productId})
+                updateLabels()
+            } else {
+                addOrRemoveProduct(productId: productId,
+                                   productImage: productImage,
+                                   productName: productName,
+                                   quantity: quantity,
+                                   productPrice: productPrice)
+            }
+        }
+    }
+    
+    func plusBtnTapped(with productId: Int,
+                       with productImage: UIImage,
+                       with productName: String,
+                       with productQuantity: String,
+                       with productPrice: String) {
+        
+        let quantity = Int(productQuantity)!
+        
+        
+        addOrRemoveProduct(productId: productId,
+                           productImage: productImage,
+                           productName: productName,
+                           quantity: quantity,
+                           productPrice: productPrice)
+    }
+    
+    func addOrRemoveProduct(productId: Int, productImage: UIImage, productName: String, quantity: Int, productPrice: String) {
+        guard let price = Int(productPrice.components(separatedBy: CharacterSet.decimalDigits.inverted).joined()) else {
+            return
+        }
+        
+        let filterdCartProduct = self.cartProducts.filter { $0.id == productId }
+        if let cartProduct = filterdCartProduct.first {
+            
+            self.cartProducts.removeAll(where: { $0.id == cartProduct.id })
+            self.cartProducts.append(ProductModel(id: productId, image: productImage, name: productName, quantity: quantity, price: price))
+            
+        } else {
+            self.cartProducts.append(ProductModel(id: productId, image: productImage, name: productName, quantity: quantity, price: price))
+        }
+        
+        updateLabels()
+    }
+    
+    func updateLabels(){
+        let totalProdQty = getTotalQtyOfProduct()
+        let subTotal = getSubTotal()
+        
+        self.productQtyLbl.text = "\(totalProdQty)x"
+        self.productSumPriceLbl.text = "\(subTotal)$"
+    }
+    
+    func getSubTotal() -> Int {
+        let subTotal = self.cartProducts.reduce(0) { (result, product) in
+            return result + (product.price * product.quantity)
+        }
+        
+        return subTotal
+    }
+    
+    func getTotalQtyOfProduct() -> Int {
+        let totalQuantity = self.cartProducts.reduce(0) { $0 + $1.quantity }
+        return totalQuantity
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductViewCell", for: indexPath) as?
                 ProductViewCell else {
             return UITableViewCell()
@@ -74,11 +169,13 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, Ta
         let products = products[indexPath.section]
         let product = products[indexPath.row]
         
+        cell.productId = product.id
         cell.productNameLbl.text = product.title
         cell.productStockLbl.text = "stock: \(product.stock)"
         cell.productPriceLbl.text = "price: \(product.price)"
         cell.productQuantityLbl.text = "0"
         
+        print("self.productQuantity: \(self.productQuantity)")
         let url = URL(string: product.images.first!)!
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
@@ -129,9 +226,5 @@ extension ProductsViewController: UITableViewDelegate, UITableViewDataSource, Ta
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 35.0
-    }
-    
-    func getData(data: Any) {
-        self.productQtyLbl.text = data as? String
     }
 }

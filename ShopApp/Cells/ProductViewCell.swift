@@ -7,7 +7,24 @@
 
 import UIKit
 
+protocol ProductViewCellDelegate: AnyObject {
+    func minusBtnTapped(with productId: Int,
+                        with productImage: UIImage,
+                        with productName: String,
+                        with productQuantity: String,
+                        with productPrice: String)
+    
+    func plusBtnTapped(with productId: Int,
+                        with productImage: UIImage,
+                        with productName: String,
+                        with productQuantity: String,
+                        with productPrice: String)
+}
+
 class ProductViewCell: UITableViewCell {
+    
+    weak var delegate: ProductViewCellDelegate?
+    public var productId: Int? = nil
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productNameLbl: UILabel!
@@ -17,17 +34,11 @@ class ProductViewCell: UITableViewCell {
     
     private var quantity: Int = 0
     
-    weak var delegate: TableViewCellDelegate?
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         
-        productImage.layer.borderWidth = 0.5
-        productImage.layer.masksToBounds = false
-        productImage.layer.borderColor = UIColor.lightGray.cgColor
-        productImage.layer.cornerRadius = 15
-        productImage.clipsToBounds = true
+        setupProductImage()
         
         self.makeTextBold(label: productNameLbl)
         self.makeTextBold(label: productStockLbl)
@@ -40,6 +51,14 @@ class ProductViewCell: UITableViewCell {
         self.layer.borderWidth = 0.5
     }
     
+    func setupProductImage(){
+        productImage.layer.borderWidth = 0.5
+        productImage.layer.masksToBounds = false
+        productImage.layer.borderColor = UIColor.lightGray.cgColor
+        productImage.layer.cornerRadius = 15
+        productImage.clipsToBounds = true
+    }
+    
     func makeTextBold(label: UILabel) {
         label.textColor = .black
         label.font = UIFont.boldSystemFont(ofSize: 14.0)
@@ -49,21 +68,28 @@ class ProductViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    @IBAction func decreaseQuantity(_ sender: Any) {
+    @IBAction func minusBtnTapped(_ sender: Any) {
         if self.quantity > 0 {
             self.quantity -= 1
-            updateItemQuantity()
+            self.productQuantityLbl.text = "\(self.quantity)"
         }
+        
+        delegate?.minusBtnTapped(with: self.productId!,
+                                 with: self.productImage.image!,
+                                 with: self.productNameLbl.text!,
+                                 with: self.productQuantityLbl.text!,
+                                 with: self.productPriceLbl.text!)
     }
     
-    @IBAction func increaseQuantity(_ sender: Any) {
+    @IBAction func plusBtnTapped(_ sender: Any) {
         self.quantity += 1
-        updateItemQuantity()
-    }
-    
-    func updateItemQuantity() {
-        productQuantityLbl.text = "\(self.quantity)"
-        delegate?.getData(data: "\(productQuantityLbl!.text!)x")
+        self.productQuantityLbl.text = "\(self.quantity)"
+        
+        delegate?.plusBtnTapped(with: self.productId!,
+                                with: self.productImage.image!,
+                                with: self.productNameLbl.text!,
+                                with: self.productQuantityLbl.text!,
+                                with: self.productPriceLbl.text!)
     }
     
     func setImage(image: UIImage){

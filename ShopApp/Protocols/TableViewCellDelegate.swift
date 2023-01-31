@@ -7,6 +7,10 @@
 
 import Foundation
 
-protocol TableViewCellDelegate: AnyObject {
-    func getData(data: Any)
+//protocol TableViewCellDelegate: AnyObject {
+//    func getData(data: Any)
+//}
+
+protocol CustomTableViewCellDelegate: AnyObject {
+    func updateLabel(in cell: ProductViewCell)
 }
